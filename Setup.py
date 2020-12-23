@@ -41,7 +41,7 @@ echo "Comfoconnect herunterladen von github"
 echo
 
 cd ~
-mkdir Scripts
+#mkdir Scripts
 cd Scripts/
 git clone https://github.com/hme0354/comfoconnect.git
 cd comfoconnect/
@@ -50,8 +50,8 @@ echo "Paket Comfoconnect installieren"
 
 python3 setup.py install
 
-cd ~
-git clone https://github.com/hme0354/lox2comfoconnectfhem.git
+#cd ~
+#git clone https://github.com/hme0354/lox2comfoconnectfhem.git
 cd Scripts/lox2comfoconnectfhem/
 
 echo
