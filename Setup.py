@@ -9,8 +9,6 @@ echo "Update durchgeführen"
 
 apt update 
 
-###############################kopieren CCFHEM Daten von Github ...
-
 echo
 
 python3=$(python3 --version | grep "Python 3." | wc -l)
@@ -36,25 +34,25 @@ fi
 echo
 echo "Paket python3-setuptools installieren"
 
-#################apt-get install python3-setuptools
+apt-get install python3-setuptools
 
 echo
 echo "Comfoconnect herunterladen von github"
 echo
 
-#################cd ~
-#################mkdir Scripts
-#################cd Scripts/
-#################git clone https://github.com/hme0354/comfoconnect.git
-#################cd comfoconnect/
+cd ~
+mkdir Scripts
+cd Scripts/
+git clone https://github.com/hme0354/comfoconnect.git
+cd comfoconnect/
 
 echo "Paket Comfoconnect installieren"
 
-################################python3 setup.py install
+python3 setup.py install
 
 cd ~
-#cd Scripts/
-cd /opt/loxberry/webfrontend/legacy/Skript
+git clone https://github.com/hme0354/lox2comfoconnectfhem.git
+cd Scripts/lox2comfoconnectfhem/
 
 echo
 
@@ -106,8 +104,7 @@ cd /opt/loxberry/webfrontend/legacy/fhem/
 mkdir scripts/
 
 cd ~
-#cd Scripts/
-cd /opt/loxberry/webfrontend/legacy/Skript
+cd Scripts/lox2comfoconnectfhem/
 
 cp -i -r ccfhem.py /opt/loxberry/webfrontend/legacy/fhem/scripts
 chmod 755 ccfhem.py
@@ -197,8 +194,7 @@ else
 fi
 
 cd ~
-#cd Scripts/
-cd /opt/loxberry/webfrontend/legacy/Skript
+cd Scripts/lox2comfoconnectfhem/
 
 echo
 echo	"----------------------------"
@@ -227,6 +223,7 @@ curl -q "http://$ip:8083/fhem?cmd=attr%20telnetPort%20room%20Zentral"
 #echo
 #echo	"Sicherheitsmodus deaktivieren"
 
+perl /opt/fhem/fhem.pl 7072 "attr WEB.* csrfToken none"
 #curl -q "http://$ip:8083/fhem?cmd=attr%20WEB.*%20scrfToken%20none"
 
 echo
@@ -237,11 +234,13 @@ curl -q "http://$ip:8083/fhem?cmd=define%20comfoconnect%20dummy"
 echo
 echo	"Symbol erstellen"
 
+perl /opt/fhem/fhem.pl 7072 "attr comfoconnect devStateIcon {".*:vent_ventilation_level_".ReadingsVal("comfoconnect","Stufe",0).(ReadingsVal("comfoconnect","Modus",0) ne -1 ? '@green' : "")}"
 ##################curl -q "http://$ip:8083/fhem?cmd=attr%20comfoconnect%20devStateIcon%20{%22.*:vent_ventilation_level_%22.ReadingsVal(%22comfoconnect%22,%22Stufe%22,0).(ReadingsVal(%22comfoconnect%22,%22Modus%22,0)%20ne%20-1%20?%20'@green'%20:%20%22%22)}"
 
 echo
 echo	"Einstellungen vornehmen"
 
+perl /opt/fhem/fhem.pl 7072 "attr comfoconnect userReadings ModusTXT {if(ReadingsVal("comfoconnect","Modus","") == -1) {return "Auto"} elsif (ReadingsVal("comfoconnect","Modus","") == 1) {return "Manuell Zeit"} elsif (ReadingsVal("comfoconnect","Modus","") == 5) {return "Manuell"} elsif (ReadingsVal("comfoconnect","Modus","") == 6) {return "Partymodus"} elsif (ReadingsVal("comfoconnect","Modus","") == 7) {return "AbwesendAPP"} else {return "Fehler"}}, NextTime {hex(substr(ReadingsVal("comfoconnect","Next",0),4,2))*65280+hex(substr(ReadingsVal("comfoconnect","Next",0),2,2))*255+hex(substr(ReadingsVal("comfoconnect","Next",0),0,2))}, BypassZeit {hex(substr(ReadingsVal("comfoconnect","BypassZeitHEX",0),4,2))*65280+hex(substr(ReadingsVal("comfoconnect","BypassZeitHEX",0),2,2))*255+hex(substr(ReadingsVal("comfoconnect","BypassZeitHEX",0),0,2))}"
 ##################curl -q "http://$ip:8083/fhem?cmd=attr%20comfoconnect%20userReadings%20ModusTXT%20{if(ReadingsVal(%22comfoconnect%22,%22Modus%22,%22%22)%20==%20-1)%20{return%20%22Auto%22}%20elsif%20(ReadingsVal(%22comfoconnect%22,%22Modus%22,%22%22)%20==%201)%20{return%20%22Manuell%20Zeit%22}%20elsif%20(ReadingsVal(%22comfoconnect%22,%22Modus%22,%22%22)%20==%205)%20{return%20%22Manuell%22}%20elsif%20(ReadingsVal(%22comfoconnect%22,%22Modus%22,%22%22)%20==%206)%20{return%20%22Partymodus%22}%20elsif%20(ReadingsVal(%22comfoconnect%22,%22Modus%22,%22%22)%20==%207)%20{return%20%22AbwesendAPP%22}%20else%20{return%20%22Fehler%22}},%20NextTime%20{hex(substr(ReadingsVal(%22comfoconnect%22,%22Next%22,0),4,2))*65280+hex(substr(ReadingsVal(%22comfoconnect%22,%22Next%22,0),2,2))*255+hex(substr(ReadingsVal(%22comfoconnect%22,%22Next%22,0),0,2))},%20BypassZeit%20{hex(substr(ReadingsVal(%22comfoconnect%22,%22BypassZeitHEX%22,0),4,2))*65280+hex(substr(ReadingsVal(%22comfoconnect%22,%22BypassZeitHEX%22,0),2,2))*255+hex(substr(ReadingsVal(%22comfoconnect%22,%22BypassZeitHEX%22,0),0,2))}"
 
 echo
@@ -266,17 +265,6 @@ echo	"Einstellungen in FHEM speichern"
 echo
 
 curl -q "http://$ip:8083/fhem?cmd=save"
-
-echo	"------------------------------------------"
-echo	"     Lösche der Installationsdateien!     "
-echo	"------------------------------------------"
-
-echo
-
-#cd ~
-#cd Scripts/
-#rm -rv /Scripts
-
 
 echo	"-----------------------------------"
 echo	"     Installation beendet!         "
