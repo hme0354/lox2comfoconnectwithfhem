@@ -51,8 +51,8 @@ echo "Paket Comfoconnect installieren"
 python3 setup.py install
 
 #cd ~
-#git clone https://github.com/hme0354/lox2comfoconnectfhem.git
-cd Scripts/lox2comfoconnectfhem/
+#git clone https://github.com/hme0354/lox2comfoconnectwithfhem.git
+cd ./Scripts/lox2comfoconnectwithfhem/
 
 echo
 
@@ -98,13 +98,13 @@ pw_text="pin = $pw1"
 
 perl -npi -e 's/pin = 0/'"$pw_text"'/g' ccfhem.py
 cd ~
-cd /opt/loxberry/webfrontend/legacy/
+cd ./opt/loxberry/webfrontend/legacy/
 mkdir fhem/
-cd /opt/loxberry/webfrontend/legacy/fhem/
+cd ./opt/loxberry/webfrontend/legacy/fhem/
 mkdir scripts/
 
 cd ~
-cd Scripts/lox2comfoconnectfhem/
+cd ./Scripts/lox2comfoconnectwithfhem/
 
 cp -i -r ccfhem.py /opt/loxberry/webfrontend/legacy/fhem/scripts
 chmod 755 ccfhem.py
@@ -194,7 +194,7 @@ else
 fi
 
 cd ~
-cd Scripts/lox2comfoconnectfhem/
+cd Scripts/lox2comfoconnectwithfhem/
 
 echo
 echo	"----------------------------"
