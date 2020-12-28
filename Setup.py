@@ -178,7 +178,7 @@ echo
 
 if	[ -d "/opt/fhem"	];
 then
-	pfad_fhem="/opt/fhem"
+	pfad_fhem="/opt/fhem/FHEM"
 	echo	"FHEM im Pfad" $pfad_fhem "installiert"
 elif	[ -d "/opt/loxberry/data/plugins/fhem/FHEM"	];
 then
@@ -219,7 +219,7 @@ curl -q "http://$ip:8083/fhem?cmd=attr%20telnetPort%20room%20Zentral"
 #echo
 #echo	"Sicherheitsmodus deaktivieren"
 
-perl /opt/fhem/fhem.pl 7072 "attr WEB.* csrfToken none"
+#perl /opt/fhem/fhem.pl 7072 "attr WEB.* csrfToken none"
 #curl -q "http://$ip:8083/fhem?cmd=attr%20WEB.*%20scrfToken%20none"
 
 echo
@@ -231,7 +231,7 @@ echo
 echo	"Symbol erstellen"
 
 perl /opt/fhem/fhem.pl 7072 "attr comfoconnect devStateIcon {".*:vent_ventilation_level_".ReadingsVal("comfoconnect","Stufe",0).(ReadingsVal("comfoconnect","Modus",0) ne -1 ? '@green' : "")}"
-##################curl -q "http://$ip:8083/fhem?cmd=attr%20comfoconnect%20devStateIcon%20{%22.*:vent_ventilation_level_%22.ReadingsVal(%22comfoconnect%22,%22Stufe%22,0).(ReadingsVal(%22comfoconnect%22,%22Modus%22,0)%20ne%20-1%20?%20'@green'%20:%20%22%22)}"
+#curl -q "http://$ip:8083/fhem?cmd=attr%20comfoconnect%20devStateIcon%20{%22.*:vent_ventilation_level_%22.ReadingsVal(%22comfoconnect%22,%22Stufe%22,0).(ReadingsVal(%22comfoconnect%22,%22Modus%22,0)%20ne%20-1%20?%20'@green'%20:%20%22%22)}"
 
 echo
 echo	"Einstellungen vornehmen"
@@ -242,12 +242,14 @@ perl /opt/fhem/fhem.pl 7072 "attr comfoconnect userReadings ModusTXT {if(Reading
 echo
 echo	"Abfrage Daten konfigurieren"
 
-curl -q "http://$ip:8083/fhem?cmd=define%20Q350ToLoxone%20notify%20.*:DrehzahlAbluftventilator.*%20{Q350ToLoxone(%22%24NAME%22)}"
+perl /opt/fhem/fhem.pl 7072 "define Q350ToLoxone notify .*:DrehzahlAbluftventilator.* {Q350ToLoxone("$NAME")}"
+#curl -q "http://$ip:8083/fhem?cmd=define%20Q350ToLoxone%20notify%20.*:DrehzahlAbluftventilator.*%20{Q350ToLoxone(%22%24NAME%22)}"
 
 echo	
 echo	"Autostart vom CCFHEM Skript konfigurieren"
 
-curl -q "http://$ip:8083/fhem?cmd=define%20FHEMStart%20notify%20global:INITIALIZED.*%20{system(%22python3%20/opt/loxberry/webfrontend/legacy/fhem/scripts/ccfhem.py%20--ip%20$IP_Comfo%20&%22)}"
+perl /opt/fhem/fhem.pl 7072 "define FHEMStart notify global:INITIALIZED.* {system("python3 /opt/loxberry/webfrontend/legacy/fhem/scripts/ccfhem.py --ip $IP_Comfo &")}"
+#curl -q "http://$ip:8083/fhem?cmd=define%20FHEMStart%20notify%20global:INITIALIZED.*%20{system(%22python3%20/opt/loxberry/webfrontend/legacy/fhem/scripts/ccfhem.py%20--ip%20$IP_Comfo%20&%22)}"
 
 echo
 echo	"Raum Zentral zuweisen"
@@ -260,7 +262,7 @@ echo
 echo	"Einstellungen in FHEM speichern"
 echo
 
-curl -q "http://$ip:8083/fhem?cmd=save"
+perl /opt/fhem/fhem.pl 7072 "save"
 
 echo	"-------------------------------------------"
 echo	"	Installationsdateien werden gelöscht	"
