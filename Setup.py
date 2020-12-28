@@ -51,7 +51,7 @@ echo "Paket Comfoconnect installieren"
 
 python3 setup.py install
 
-cd /opt/loxberry/Scripts/lox2comfoconnectwithfhem/
+cd /Scripts/lox2comfoconnectwithfhem/
 
 #cd ~
 #mkdir Scripts
@@ -98,13 +98,13 @@ done
 
 pw_text="pin = $pw1"
 
-perl -npi -e 's/pin = 0/'"$pw_text"'/g' /opt/loxberry/Scripts/lox2comfoconnectwithfhem/ccfhem.py
+perl -npi -e 's/pin = 0/'"$pw_text"'/g' /Scripts/lox2comfoconnectwithfhem/ccfhem.py
 
 mkdir -p /opt/loxberry/webfrontend/legacy/fhem/scripts
-cp -i -r /opt/loxberry/Scripts/lox2comfoconnectwithfhem/ccfhem.py /opt/loxberry/webfrontend/legacy/fhem/scripts
+cp -i -r /Scripts/lox2comfoconnectwithfhem/ccfhem.py /opt/loxberry/webfrontend/legacy/fhem/scripts
 chmod 755 /opt/loxberry/webfrontend/legacy/fhem/scripts/ccfhem.py
 
-rm /opt/loxberry/Scripts/lox2comfoconnectwithfhem/ccfhem.py
+rm /Scripts/lox2comfoconnectwithfhem/ccfhem.py
 
 echo
 
@@ -208,8 +208,8 @@ echo
 
 echo	"Datei 99_myUtils.pm IP-Adresse Miniserver einstellen und verschieben"
 
-perl -npi -e 's/MS_IP/'"$IP_MS"'/g' rm /opt/loxberry/Scripts/lox2comfoconnectwithfhem/99_myUtils.pm
-cp -i -r rm /opt/loxberry/Scripts/lox2comfoconnectwithfhem/ccfhem.py99_myUtils.pm $pfad_fhem
+perl -npi -e 's/MS_IP/'"$IP_MS"'/g' rm /Scripts/lox2comfoconnectwithfhem/99_myUtils.pm
+cp -i -r rm /Scripts/lox2comfoconnectwithfhem/ccfhem.py99_myUtils.pm $pfad_fhem
 
 echo
 echo	"Telnet einstellen"
@@ -268,7 +268,7 @@ echo	"	Installationsdateien werden gelöscht	"
 echo	"-------------------------------------------"
 echo
 
-rm -r /opt/loxberry/Scripts/
+rm -r /Scripts/
 
 echo	"-----------------------------------"
 echo	"     Installation beendet!         "
