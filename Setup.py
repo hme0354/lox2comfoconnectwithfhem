@@ -40,6 +40,7 @@ echo
 echo "Comfoconnect herunterladen von github"
 echo
 
+cd
 cd Scripts/
 git clone https://github.com/hme0354/comfoconnect.git
 cd comfoconnect/
@@ -48,11 +49,8 @@ echo "Paket Comfoconnect installieren"
 
 python3 setup.py install
 
+cd
 cd Scripts/lox2comfoconnectwithfhem/
-
-#cd ~
-#mkdir Scripts
-#git clone https://github.com/hme0354/lox2comfoconnectwithfhem.git
 
 echo
 
@@ -95,6 +93,7 @@ done
 
 pw_text="pin = $pw1"
 
+cd
 cd Scripts/lox2comfoconnectwithfhem
 perl -npi -e 's/pin = 0/'"$pw_text"'/g' ccfhem.py
 
@@ -206,6 +205,7 @@ echo
 
 echo	"Datei 99_myUtils.pm IP-Adresse Miniserver einstellen und verschieben"
 
+cd
 cd Scripts/lox2comfoconnectwithfhem
 perl -npi -e 's/MS_IP/'"$IP_MS"'/g' rm 99_myUtils.pm
 cp -i -r rm 99_myUtils.pm $pfad_fhem
@@ -267,6 +267,7 @@ echo	"	Installationsdateien werden gelöscht	"
 echo	"-------------------------------------------"
 echo
 
+cd
 #rm -r Scripts/
 
 echo	"-----------------------------------"
