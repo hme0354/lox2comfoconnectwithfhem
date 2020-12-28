@@ -259,14 +259,12 @@ echo	"-------------------------------------------"
 echo
 
 cd
-#rm -r Scripts/
+rm -r Scripts/
 
- echo	"-----------------------------------"
- echo	"     Installation beendet!         "
- echo	"          Viel Spaß!               "
- echo	"     Copyright © 2020  hme0354     "
- echo
- echo	"     All rights reserved           "
- echo	"-----------------------------------"
-
-#exec restart
+echo	"-----------------------------------"
+echo	"     Installation beendet!         "
+echo	"          Viel Spaß!               "
+echo	"     Copyright © 2020  hme0354     "
+echo
+echo	"     All rights reserved           "
+echo	"-----------------------------------"
