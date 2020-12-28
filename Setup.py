@@ -7,7 +7,8 @@ echo
 
 echo "Update durchgeführen"
 
-apt update 
+apt update
+apt-get install ipcalc
 
 echo
 
@@ -41,7 +42,7 @@ echo "Comfoconnect herunterladen von github"
 echo
 
 cd ~
-#mkdir Scripts
+mkdir Scripts
 cd Scripts/
 git clone https://github.com/hme0354/comfoconnect.git
 cd comfoconnect/
@@ -50,9 +51,11 @@ echo "Paket Comfoconnect installieren"
 
 python3 setup.py install
 
+cd /opt/loxberry/Scripts/lox2comfoconnectwithfhem/
+
 #cd ~
+#mkdir Scripts
 #git clone https://github.com/hme0354/lox2comfoconnectwithfhem.git
-cd ./Scripts/lox2comfoconnectwithfhem/
 
 echo
 
@@ -95,19 +98,13 @@ done
 
 pw_text="pin = $pw1"
 
+perl -npi -e 's/pin = 0/'"$pw_text"'/g' /opt/loxberry/Scripts/lox2comfoconnectwithfhem/ccfhem.py
 
-perl -npi -e 's/pin = 0/'"$pw_text"'/g' ccfhem.py
-cd ~
-cd ./opt/loxberry/webfrontend/legacy/
-mkdir fhem/
-cd ./opt/loxberry/webfrontend/legacy/fhem/
-mkdir scripts/
+mkdir -p /opt/loxberry/webfrontend/legacy/fhem/scripts
+cp -i -r /opt/loxberry/Scripts/lox2comfoconnectwithfhem/ccfhem.py /opt/loxberry/webfrontend/legacy/fhem/scripts
+chmod 755 /opt/loxberry/webfrontend/legacy/fhem/scripts/ccfhem.py
 
-cd ~
-cd ./Scripts/lox2comfoconnectwithfhem/
-
-cp -i -r ccfhem.py /opt/loxberry/webfrontend/legacy/fhem/scripts
-chmod 755 ccfhem.py
+rm /opt/loxberry/Scripts/lox2comfoconnectwithfhem/ccfhem.py
 
 echo
 
@@ -119,7 +116,7 @@ do
 	if echo $IP_Comfo |egrep '.*\..*\..*\..*' >/dev/null 2>&1; then
 
 		counter=1
-		start=1
+		start=0
 		stop=255
 
 		while [ $counter -le '4' ]; do
@@ -129,10 +126,14 @@ do
 				exit 1
 			fi
 			counter=`expr $counter + 1`
+			if [ $counter -eq '4' ]; then
+				start=`expr $start + 1`
+			fi
 		done
+		echo "IP-Adresse gültig!"
 		i=4
 	else
-		echo "falscher Syntax"
+		echo "falscher Syntax!"
 		echo
 	fi
 	
@@ -148,7 +149,6 @@ echo
 ping -c1 $IP_Comfo > /dev/null
 if [ $? -eq 0 ]
 then 
-	echo	"IP-Adresse ist gültig!"
 	echo	"Comfoconnect erreichbar"
 else
 	echo	"Comfoconnect nicht erreichbar"
@@ -193,9 +193,6 @@ else
 	exit 1
 fi
 
-cd ~
-cd Scripts/lox2comfoconnectwithfhem/
-
 echo
 echo	"----------------------------"
 echo	"     FHEM konfigurieren     "
@@ -211,8 +208,8 @@ echo
 
 echo	"Datei 99_myUtils.pm IP-Adresse Miniserver einstellen und verschieben"
 
-perl -npi -e 's/MS_IP/'"$IP_MS"'/g' 99_myUtils.pm
-cp -i 99_myUtils.pm $pfad_fhem
+perl -npi -e 's/MS_IP/'"$IP_MS"'/g' rm /opt/loxberry/Scripts/lox2comfoconnectwithfhem/99_myUtils.pm
+cp -i -r rm /opt/loxberry/Scripts/lox2comfoconnectwithfhem/ccfhem.py99_myUtils.pm $pfad_fhem
 
 echo
 echo	"Telnet einstellen"
@@ -265,6 +262,13 @@ echo	"Einstellungen in FHEM speichern"
 echo
 
 curl -q "http://$ip:8083/fhem?cmd=save"
+
+echo	"-------------------------------------------"
+echo	"	Installationsdateien werden gelöscht	"
+echo	"-------------------------------------------"
+echo
+
+rm -r /opt/loxberry/Scripts/
 
 echo	"-----------------------------------"
 echo	"     Installation beendet!         "
