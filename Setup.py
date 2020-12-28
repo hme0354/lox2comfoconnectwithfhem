@@ -8,7 +8,6 @@ echo
 echo "Update durchgeführen"
 
 apt update
-apt-get install ipcalc
 
 echo
 
@@ -41,8 +40,6 @@ echo
 echo "Comfoconnect herunterladen von github"
 echo
 
-cd ~
-mkdir Scripts
 cd Scripts/
 git clone https://github.com/hme0354/comfoconnect.git
 cd comfoconnect/
@@ -98,13 +95,14 @@ done
 
 pw_text="pin = $pw1"
 
-perl -npi -e 's/pin = 0/'"$pw_text"'/g' /Scripts/lox2comfoconnectwithfhem/ccfhem.py
+cd Scripts/lox2comfoconnectwithfhem
+perl -npi -e 's/pin = 0/'"$pw_text"'/g' ccfhem.py
 
 mkdir -p /opt/loxberry/webfrontend/legacy/fhem/scripts
-cp -i -r /Scripts/lox2comfoconnectwithfhem/ccfhem.py /opt/loxberry/webfrontend/legacy/fhem/scripts
+cp -i -r ccfhem.py /opt/loxberry/webfrontend/legacy/fhem/scripts
 chmod 755 /opt/loxberry/webfrontend/legacy/fhem/scripts/ccfhem.py
 
-rm /Scripts/lox2comfoconnectwithfhem/ccfhem.py
+rm ccfhem.py
 
 echo
 
@@ -208,8 +206,9 @@ echo
 
 echo	"Datei 99_myUtils.pm IP-Adresse Miniserver einstellen und verschieben"
 
-perl -npi -e 's/MS_IP/'"$IP_MS"'/g' rm /Scripts/lox2comfoconnectwithfhem/99_myUtils.pm
-cp -i -r rm /Scripts/lox2comfoconnectwithfhem/ccfhem.py99_myUtils.pm $pfad_fhem
+cd Scripts/lox2comfoconnectwithfhem
+perl -npi -e 's/MS_IP/'"$IP_MS"'/g' rm 99_myUtils.pm
+cp -i -r rm 99_myUtils.pm $pfad_fhem
 
 echo
 echo	"Telnet einstellen"
@@ -268,7 +267,7 @@ echo	"	Installationsdateien werden gelöscht	"
 echo	"-------------------------------------------"
 echo
 
-rm -r /Scripts/
+#rm -r Scripts/
 
 echo	"-----------------------------------"
 echo	"     Installation beendet!         "
