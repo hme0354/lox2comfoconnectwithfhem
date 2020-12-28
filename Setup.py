@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo	"--------------------------------------------------------------------------"
-echo 	"     Install Skript comfoconnect for Loxone with loxberry & FHEM V0.0     "
+echo 	"     Install Skript comfoconnect for Loxone with loxberry & FHEM V0.3     "
 echo 	"--------------------------------------------------------------------------"
 echo
 
