@@ -48,7 +48,7 @@ echo "Paket Comfoconnect installieren"
 
 python3 setup.py install
 
-cd /Scripts/lox2comfoconnectwithfhem/
+cd Scripts/lox2comfoconnectwithfhem/
 
 #cd ~
 #mkdir Scripts
