@@ -158,6 +158,8 @@ echo	"     Abfrage IP-Adresse Miniserver     "
 echo	"---------------------------------------"
 echo
 
+Network.Ipv4.Ipaddress
+
 IP_MS=$(jq -r '.Miniserver["1"].Ipaddress' "$LBSCONFIG/general.json")
 
 if [[ "$IP_MS" == "null" ]]; then
@@ -196,7 +198,11 @@ echo
 echo	"IP-Adresse auslesen"
 echo
 
-ip="$(ip addr show eth0 | grep -vw "inet6" | grep "global" | grep -w "inet" | cut -d/ -f1 | awk '{ print $2 }')"
+#ip="$(ip addr show eth0 | grep -vw "inet6" | grep "global" | grep -w "inet" | cut -d/ -f1 | awk '{ print $2 }')"
+
+Network.Ipv4.Ipaddress
+
+ip=$(jq -r '.Network.Ipv4.Ipaddress' "$LBSCONFIG/general.json")
 
 echo	$ip
 echo
