@@ -158,6 +158,8 @@ echo	"     Abfrage IP-Adresse Miniserver     "
 echo	"---------------------------------------"
 echo
 
+Network.Ipv4.Ipaddress
+
 IP_MS=$(jq -r '.Miniserver["1"].Ipaddress' "$LBSCONFIG/general.json")
 
 if [[ "$IP_MS" == "null" ]]; then
@@ -196,7 +198,11 @@ echo
 echo	"IP-Adresse auslesen"
 echo
 
-ip="$(ip addr show eth0 | grep -vw "inet6" | grep "global" | grep -w "inet" | cut -d/ -f1 | awk '{ print $2 }')"
+#ip="$(ip addr show eth0 | grep -vw "inet6" | grep "global" | grep -w "inet" | cut -d/ -f1 | awk '{ print $2 }')"
+
+Network.Ipv4.Ipaddress
+
+ip=$(jq -r '.Network.Ipv4.Ipaddress' "$LBSCONFIG/general.json")
 
 echo	$ip
 echo
@@ -224,7 +230,7 @@ curl -q "http://$ip:8083/fhem?cmd=define%20comfoconnect%20dummy"
 echo
 echo	"Symbol erstellen"
 
-curl -q "http://192.168.0.175:8083/fhem?cmd=attr%20comfoconnect%20devStateIcon%20%7B%22%2E%2A%3Avent_ventilation_level_%22%2EReadingsVal(%22comfoconnect%22%2C%22Stufe%22%2C0)%2E(ReadingsVal(%22comfoconnect%22%2C%22Modus%22%2C0)%20ne%20%2D1%20%3F%20%27%40green%27%20%3A%20%22%22)%7D"
+curl -q "http://$ip:8083/fhem?cmd=attr%20comfoconnect%20devStateIcon%20%7B%22%2E%2A%3Avent_ventilation_level_%22%2EReadingsVal(%22comfoconnect%22%2C%22Stufe%22%2C0)%2E(ReadingsVal(%22comfoconnect%22%2C%22Modus%22%2C0)%20ne%20%2D1%20%3F%20%27%40green%27%20%3A%20%22%22)%7D"
 
 echo
 echo	"Einstellungen vornehmen"
