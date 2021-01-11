@@ -730,7 +730,7 @@ conf = {
   'TYPE' : 0
  },
  212 : {
-  'NAME' : 'Test212',
+  'NAME' : 'Zieltemperatur',
   'TYPE' : 6
  },
  213 : {
