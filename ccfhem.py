@@ -716,7 +716,7 @@ conf = {
   'TYPE' : 1
  },
  209 : {
-  'NAME' : 'AktuelleGrenztemeratur',
+  'NAME' : 'AktuelleGrenztemperatur',
   'TYPE' : 6,
   'CONV' : "%i / 10",
   'UNIT' : '°C'
