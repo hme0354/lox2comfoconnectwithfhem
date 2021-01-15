@@ -174,7 +174,7 @@ conf = {
   'UNIT' : 'Tage'
  },
  208 : {
-  'NAME' : 'Test208',
+  'NAME' : 'EinstellungEinheitGUI',
   'TYPE' : 1
  },
  209 : {
@@ -192,8 +192,10 @@ conf = {
   'TYPE' : 0
  },
  212 : {
-  'NAME' : 'Test212',
-  'TYPE' : 6
+  'NAME' : 'SolltemperaturRegelung',
+  'TYPE' : 6,
+  'CONV' : "%i / 10",
+  'UNIT' : '°C'
  },
  213 : {
   'NAME' : 'VermiedenerHeizstrom',
@@ -225,7 +227,7 @@ conf = {
   'TYPE' : 1
  },
  225 : {
-  'NAME' : 'LueftungAktiv',
+  'NAME' : 'Komfortregelung',
   'TYPE' : 1
  },
  226 : {
