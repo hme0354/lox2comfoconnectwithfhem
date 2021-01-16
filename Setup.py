@@ -214,6 +214,9 @@ cd Scripts/lox2comfoconnectwithfhem
 perl -npi -e 's/MS_IP/'"$IP_MS"'/g' 99_myUtils.pm
 cp -i -r 99_myUtils.pm $pfad_fhem
 
+cd $pfad_fhem
+chmod -+ a+rwx 99_myUtils.pm 
+
 echo
 echo	"Telnet einstellen"
 
