@@ -76,8 +76,14 @@ $BYPASS_MODUS=ReadingsVal("$device","BYPASS_MODUS","-1");
 $BypassZeit=ReadingsVal("$device","BypassZeit","-1");
  my 
 $Temperaturprofil=ReadingsVal("$device","Temperaturprofil","-1");
+ my 
+$FrostschutzUnbalance=ReadingsVal("$device","FrostschutzUnbalance","-1");
+ my 
+$DrehzahlAbluftventilator=ReadingsVal("$device","DrehzahlAbluftventilator","-1");
+ my 
+$DrehzahlZuluftventilator=ReadingsVal("$device","DrehzahlZuluftventilator","-1");
 
-UDP_Msg("MS_IP" , "7002" , "$device: $Abluftfeuchte $Ablufttemperatur $Abluftventilatorvolumen $Aussenluftfeuchte $Aussenlufttemperatur $Bypass $Filterwechsel $Fortluftfeuchte $Fortlufttemperatur $Leistung $ModusTXT $Stufe $Zuluftfeuchte $Zulufttemperatur $Zuluftventilatorvolumen $NextTime $BYPASS_MODUS $BypassZeit $Temperaturprofil");
+UDP_Msg("MS_IP" , "7002" , "$device: $Abluftfeuchte $Ablufttemperatur $Abluftventilatorvolumen $Aussenluftfeuchte $Aussenlufttemperatur $Bypass $Filterwechsel $Fortluftfeuchte $Fortlufttemperatur $Leistung $ModusTXT $Stufe $Zuluftfeuchte $Zulufttemperatur $Zuluftventilatorvolumen $NextTime $BYPASS_MODUS $BypassZeit $Temperaturprofil $FrostschutzUnbalance $DrehzahlAbluftventilator $DrehzahlZuluftventilator");
 }
 
 1;
