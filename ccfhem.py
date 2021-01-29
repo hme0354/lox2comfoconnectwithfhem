@@ -164,7 +164,7 @@ conf = {
   'UNIT' : 'kWh' 
  },
  176 : {
-  'NAME' : 'Test176',
+  'NAME' : 'SETTING RF PAIRING',
   'TYPE' : 1
  },
  192 : {
