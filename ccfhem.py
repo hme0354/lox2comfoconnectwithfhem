@@ -260,6 +260,12 @@ conf = {
   'CONV' : "%i / 10",
   'UNIT' : '°C'
  },
+ 277 : {
+  'NAME' : 'TemperaturNachVorheizregister',
+  'TYPE' : 6,
+  'CONV' : "%i / 10",
+  'UNIT' : '°C'
+ },
  290 : {
   'NAME' : 'Abluftfeuchte',
   'TYPE' : 1,
@@ -275,6 +281,7 @@ conf = {
   'TYPE' : 1,
   'UNIT' : '%'
  },
+
  294 : {
   'NAME' : 'Zuluftfeuchte',
   'TYPE' : 1,
