@@ -31,59 +31,63 @@ $sock->send($cmd) or die "Send error: $!\n";
 return "send $cmd";
 }
 
-#HarmonyActivityToLoxone
-#1 currentActivity
-#2 state
-
 sub Q350ToLoxone($)
 {
  my ($device) = @_;
 my 
-$Abluftfeuchte=ReadingsVal("$device","Abluftfeuchte","-1");
+$LeistungLueftung=ReadingsVal("$device","LeistungLueftung","-1");
 my 
-$Ablufttemperatur=ReadingsVal("$device","Ablufttemperatur","-1");
+$LeistungVorheizregisterIST=ReadingsVal("$device","LeistungVorheizregisterIST","-1");
 my 
-$Abluftventilatorvolumen=ReadingsVal("$device","Abluftventilatorvolumen","-1");
+$LuftfeuchteAbluftAussen=ReadingsVal("$device","LuftfeuchteAbluftAussen","-1");
 my 
-$Aussenluftfeuchte=ReadingsVal("$device","Aussenluftfeuchte","-1");
+$LuftfeuchteAbluftInnen=ReadingsVal("$device","LuftfeuchteAbluftInnen","-1");
 my 
-$Aussenlufttemperatur=ReadingsVal("$device","Aussenlufttemperatur","-1");
+$LuftfeuchteZuluftAussen=ReadingsVal("$device","LuftfeuchteZuluftAussen","-1");
 my 
-$Bypass=ReadingsVal("$device","Bypass","-1");
+$LuftfeuchteZuluftInnen=ReadingsVal("$device","LuftfeuchteZuluftInnen","-1");
 my 
-$Filterwechsel=ReadingsVal("$device","Filterwechsel","-1");
+$LuftfeuchtNachVorheizregister=ReadingsVal("$device","LuftfeuchtNachVorheizregister","-1");
 my 
-$Fortluftfeuchte=ReadingsVal("$device","Fortluftfeuchte","-1");
+$Modus=ReadingsVal("$device","Modus","-1");
 my 
-$Fortlufttemperatur=ReadingsVal("$device","Fortlufttemperatur","-1");
+$ModusBypass=ReadingsVal("$device","ModusBypass","-1");
 my 
-$Leistung=ReadingsVal("$device","Leistung","-1");
+$ModusKomfortregelung=ReadingsVal("$device","ModusKomfortregelung","-1");
 my 
-$ModusTXT=ReadingsVal("$device","Modus","-1");
+$ModusTemperaturprofil=ReadingsVal("$device","ModusTemperaturprofil","-1");
 my 
 $Stufe=ReadingsVal("$device","Stufe","-1");
 my 
-$Zuluftfeuchte=ReadingsVal("$device","Zuluftfeuchte","-1");
+$TemperaturAbluftAussen=ReadingsVal("$device","TemperaturAbluftAussen","-1");
  my 
-$Zulufttemperatur=ReadingsVal("$device","Zulufttemperatur","-1");
+$TemperaturAbluftInnen=ReadingsVal("$device","TemperaturAbluftInnen","-1");
  my 
-$Zuluftventilatorvolumen=ReadingsVal("$device","Zuluftventilatorvolumen","-1");
+$TemperaturNachVorheizregister=ReadingsVal("$device","TemperaturNachVorheizregister","-1");
  my 
-$NextTime=ReadingsVal("$device","NextTime","-1");
+$TemperaturZuluftAußen=ReadingsVal("$device","TemperaturZuluftAußen","-1");
  my 
-$BYPASS_MODUS=ReadingsVal("$device","BYPASS_MODUS","-1");
+$TemperaturZuluftInnen=ReadingsVal("$device","TemperaturZuluftInnen","-1");
  my 
-$BypassZeit=ReadingsVal("$device","BypassZeit","-1");
+$VentilatorvolumenAbluft=ReadingsVal("$device","VentilatorvolumenAbluft","-1");
  my 
-$Temperaturprofil=ReadingsVal("$device","Temperaturprofil","-1");
+$VentilatorvolumenZuluft=ReadingsVal("$device","VentilatorvolumenZuluft","-1");
  my 
-$FrostschutzUnbalance=ReadingsVal("$device","FrostschutzUnbalance","-1");
+$VerbrauchLueftungGesamt=ReadingsVal("$device","VerbrauchLueftungGesamt","-1");
  my 
-$DrehzahlAbluftventilator=ReadingsVal("$device","DrehzahlAbluftventilator","-1");
+$VerbrauchVorheizregisterGesamt=ReadingsVal("$device","VerbrauchVorheizregisterGesamt","-1");
  my 
-$DrehzahlZuluftventilator=ReadingsVal("$device","DrehzahlZuluftventilator","-1");
+$ZeitAllgemein=ReadingsVal("$device","ZeitAllgemein","-1");
+ my 
+$ZeitBypass=ReadingsVal("$device","ZeitBypass","-1");
+ my 
+$ZeitFilterwechsel=ReadingsVal("$device","ZeitFilterwechsel","-1");
+ my 
+$ZustandBypass=ReadingsVal("$device","ZustandBypass","-1");
+ my 
+$ZustandFrostschutzAusgleich=ReadingsVal("$device","ZustandFrostschutzAusgleich","-1");
 
-UDP_Msg("MS_IP" , "7002" , "$device: $Abluftfeuchte $Ablufttemperatur $Abluftventilatorvolumen $Aussenluftfeuchte $Aussenlufttemperatur $Bypass $Filterwechsel $Fortluftfeuchte $Fortlufttemperatur $Leistung $ModusTXT $Stufe $Zuluftfeuchte $Zulufttemperatur $Zuluftventilatorvolumen $NextTime $BYPASS_MODUS $BypassZeit $Temperaturprofil $FrostschutzUnbalance $DrehzahlAbluftventilator $DrehzahlZuluftventilator");
+UDP_Msg("MS_IP" , "7002" , "$device: $LeistungLueftung $LeistungVorheizregisterIST $LuftfeuchteAbluftAussen $LuftfeuchteAbluftInnen $LuftfeuchteZuluftAussen $LuftfeuchteZuluftInnen $LuftfeuchtNachVorheizregister $Modus $ModusBypass $ModusKomfortregelung $ModusTemperaturprofil $Stufe $TemperaturAbluftAussen $TemperaturAbluftInnen $TemperaturNachVorheizregister $TemperaturZuluftAußen $TemperaturZuluftInnen $VentilatorvolumenAbluft $VentilatorvolumenZuluft $VerbrauchLueftungGesamt $VerbrauchVorheizregisterGesamt $ZeitAllgemein $ZeitBypass $ZeitFilterwechsel $ZustandBypass $ZustandFrostschutzAusgleich");
 }
 
 1;

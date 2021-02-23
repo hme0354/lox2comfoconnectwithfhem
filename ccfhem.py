@@ -61,7 +61,7 @@ conf = {
   'TYPE' : 1
  },
  56 : {
-  'NAME' : 'Mode_Auto-Manuell',
+  'NAME' : 'ModusAutoManuell',
   'TYPE' : 1
  },
  65 : {
@@ -70,27 +70,27 @@ conf = {
   'CONV' : 'str(%i)[-1:]'
  },
  66 : {
-  'NAME' : 'BYPASS_MODUS',
+  'NAME' : 'ModusBypass',
   'TYPE' : 1
  },
  67 : {
-  'NAME' : 'Temperaturprofil',
+  'NAME' : 'ModusTemperaturprofil',
   'TYPE' : 1
  },
  70 : {
-  'NAME' : 'NurZuluftventilator',
+  'NAME' : 'ModusNurZuluftventilator',
   'TYPE' : 1
  },
  71 : {
-  'NAME' : 'NurAbluftventilator',
+  'NAME' : 'ModusNurAbluftventilator',
   'TYPE' : 1
  },
  81 : {
-  'NAME' : 'Next',
+  'NAME' : 'ZeitAllgemeinHex',
   'TYPE' : 3
  },
  82 : {
-  'NAME' : 'BypassZeitHEX',
+  'NAME' : 'ZeitBypassHex',
   'TYPE' : 3
  },
  85 : {
@@ -98,30 +98,30 @@ conf = {
   'TYPE' : 3
  },
  86 : {
-  'NAME' : 'ZuluftZeitHEX',
+  'NAME' : 'ZeitZuluftHEX',
   'TYPE' : 3
  },
  87 : {
-  'NAME' : 'AbluftZeitHEX',
+  'NAME' : 'ZeitAbluftHEX',
   'TYPE' : 3
  },
  117 : {
-  'NAME' : 'AbluftAuslastung',
+  'NAME' : 'AuslastungAbluft',
   'TYPE' : 1,
   'UNIT' : '%'
  },
  118 : {
-  'NAME' : 'ZuluftAuslastung',
+  'NAME' : 'AuslastungZuluft',
   'TYPE' : 1,
   'UNIT' : '%'
  },
  119 : {
-  'NAME' : 'Abluftventilatorvolumen',
+  'NAME' : 'VentilatorvolumenAbluft',
   'TYPE' : 2,
   'UNIT' : 'm³/h'
  },
  120 : {
-  'NAME' : 'Zuluftventilatorvolumen',
+  'NAME' : 'VentilatorvolumenZuluft',
   'TYPE' : 2,
   'UNIT' : 'm³/h'
  },
@@ -136,30 +136,30 @@ conf = {
   'UNIT' : 'U/min'
  },
  128 : {
-  'NAME' : 'Leistung',
+  'NAME' : 'LeistungLueftung',
   'TYPE' : 2,
   'UNIT' : 'W'
  },
  129 : {
-  'NAME' : 'StromverbrauchProJahr',
+  'NAME' : 'VerbrauchLueftungProJahr',
   'TYPE' : 2
  },
  130 : {
-  'NAME' : 'StromverbrauchGesamt',
+  'NAME' : 'VerbrauchLueftungGesamt',
   'TYPE' : 2
  },
  144 : {
-  'NAME' : 'StromverbrauchVorheizregisterProJahr',
+  'NAME' : 'VerbrauchVorheizregisterProJahr',
   'TYPE' : 2,
   'UNIT' : 'W'
  },
  145 : {
-  'NAME' : 'StromverbrauchVorheizregisterGesamt',
+  'NAME' : 'VerbrauchVorheizregisterGesamt',
   'TYPE' : 2,
   'UNIT' : 'kWh'
  },
  146 : {
-  'NAME' : 'StromverbrauchVorheizregister',
+  'NAME' : 'LeistungVorheizregisterIST',
   'TYPE' : 2,
   'UNIT' : 'kWh' 
  },
@@ -168,7 +168,7 @@ conf = {
   'TYPE' : 1
  },
  192 : {
-  'NAME' : 'Filterwechsel',
+  'NAME' : 'ZeitFilterwechsel',
   'TYPE' : 2,
   'UNIT' : 'Tage'
  },
@@ -177,46 +177,46 @@ conf = {
   'TYPE' : 1
  },
  209 : {
-  'NAME' : 'AktuelleGrenztemeratur',
+  'NAME' : 'GrenztemeraturAktuell',
   'TYPE' : 6,
   'CONV' : "%i / 10",
   'UNIT' : '°C'
  },
  210 : {
-  'NAME' : 'Heizperiode',
+  'NAME' : 'ModusHeizperiode',
   'TYPE' : 0
  },
  211 : {
-  'NAME' : 'Kuehlperiode',
+  'NAME' : 'ModusKuehlperiode',
   'TYPE' : 0
  },
  212 : {
-  'NAME' : 'SolltemperaturRegelung',
+  'NAME' : 'TemperaturSollRegelung',
   'TYPE' : 6,
   'CONV' : "%i / 10",
   'UNIT' : '°C'
  },
  213 : {
-  'NAME' : 'VermiedenerHeizstrom',
+  'NAME' : 'LeistunHeizstromVermieden',
   'TYPE' : 2,
   'UNIT' : 'W'
  },
  214 : {
-  'NAME' : 'VermiedenerHeizstromJahr',
+  'NAME' : 'VerbrauchVermiedenerHeizstromJahr',
   'TYPE' : 2,
   'UNIT' : 'kWh'
  },
  215 : {
-  'NAME' : 'VermiedenerHeizstromGesamt',
+  'NAME' : 'VerbrauchVermiedenerHeizstromGesamt',
   'TYPE' : 2,
   'UNIT' : 'kWh'
  },
  219 : {
-  'NAME' : 'Test219',
+  'NAME' : 'LeistungVorheizregisterSOLL',
   'TYPE' : 2
  },
  221 : {
-  'NAME' : 'Zulufttemperatur',
+  'NAME' : 'TemperaturZuluftInnen',
   'TYPE' : 6,
   'CONV' : "%i / 10",
   'UNIT' : '°C'
@@ -226,7 +226,7 @@ conf = {
   'TYPE' : 1
  },
  225 : {
-  'NAME' : 'Komfortregelung',
+  'NAME' : 'ModusKomfortregelung',
   'TYPE' : 1
  },
  226 : {
@@ -234,28 +234,28 @@ conf = {
   'TYPE' : 2
  },
  227 : {
-  'NAME' : 'Bypass',
+  'NAME' : 'ZustandBypass',
   'TYPE' : 1,
   'UNIT' : '%'
  },
  228 : {
-  'NAME' : 'FrostschutzUnbalance',
+  'NAME' : 'ZustandFrostschutzAusgleich',
   'TYPE' : 1
  },
  274 : {
-  'NAME' : 'Ablufttemperatur',
+  'NAME' : 'TemperaturAbluftInnen',
   'TYPE' : 6,
   'CONV' : "%i / 10",
   'UNIT' : '°C'
  },
  275 : {
-  'NAME' : 'Fortlufttemperatur',
+  'NAME' : 'TemperaturAbluftAussen',
   'TYPE' : 6,
   'CONV' : "%i / 10",
   'UNIT' : '°C'
  },
  276 : {
-  'NAME' : 'Aussenlufttemperatur',
+  'NAME' : 'TemperaturZuluftAußen',
   'TYPE' : 6,
   'CONV' : "%i / 10",
   'UNIT' : '°C'
@@ -267,23 +267,27 @@ conf = {
   'UNIT' : '°C'
  },
  290 : {
-  'NAME' : 'Abluftfeuchte',
+  'NAME' : 'LuftfeuchteAbluftInnen',
   'TYPE' : 1,
   'UNIT' : '%'
  },
  291 : {
-  'NAME' : 'Fortluftfeuchte',
+  'NAME' : 'LuftfeuchteAbluftAussen',
   'TYPE' : 1,
   'UNIT' : '%'
  },
  292 : {
-  'NAME' : 'Aussenluftfeuchte',
+  'NAME' : 'LuftfeuchteZuluftAussen',
   'TYPE' : 1,
   'UNIT' : '%'
  },
-
+ 293 : {
+  'NAME' : 'LuftfeuchtNachVorheizregister',
+  'TYPE' : 1,
+  'UNIT' : '%'
+ },
  294 : {
-  'NAME' : 'Zuluftfeuchte',
+  'NAME' : 'LuftfeuchteZuluftInnen',
   'TYPE' : 1,
   'UNIT' : '%'
  },
