@@ -65,7 +65,7 @@ $TemperaturAbluftInnen=ReadingsVal("$device","TemperaturAbluftInnen","-1");
  my 
 $TemperaturNachVorheizregister=ReadingsVal("$device","TemperaturNachVorheizregister","-1");
  my 
-$TemperaturZuluftAußen=ReadingsVal("$device","TemperaturZuluftAußen","-1");
+$TemperaturZuluftAussen=ReadingsVal("$device","TemperaturZuluftAussen","-1");
  my 
 $TemperaturZuluftInnen=ReadingsVal("$device","TemperaturZuluftInnen","-1");
  my 
@@ -87,7 +87,7 @@ $ZustandBypass=ReadingsVal("$device","ZustandBypass","-1");
  my 
 $ZustandFrostschutzAusgleich=ReadingsVal("$device","ZustandFrostschutzAusgleich","-1");
 
-UDP_Msg("MS_IP" , "7002" , "$device: $LeistungLueftung $LeistungVorheizregisterIST $LuftfeuchteAbluftAussen $LuftfeuchteAbluftInnen $LuftfeuchteZuluftAussen $LuftfeuchteZuluftInnen $LuftfeuchtNachVorheizregister $Modus $ModusBypass $ModusKomfortregelung $ModusTemperaturprofil $Stufe $TemperaturAbluftAussen $TemperaturAbluftInnen $TemperaturNachVorheizregister $TemperaturZuluftAußen $TemperaturZuluftInnen $VentilatorvolumenAbluft $VentilatorvolumenZuluft $VerbrauchLueftungGesamt $VerbrauchVorheizregisterGesamt $ZeitAllgemein $ZeitBypass $ZeitFilterwechsel $ZustandBypass $ZustandFrostschutzAusgleich");
+UDP_Msg("MS_IP" , "7002" , "$device: $LeistungLueftung $LeistungVorheizregisterIST $LuftfeuchteAbluftAussen $LuftfeuchteAbluftInnen $LuftfeuchteZuluftAussen $LuftfeuchteZuluftInnen $LuftfeuchtNachVorheizregister $Modus $ModusBypass $ModusKomfortregelung $ModusTemperaturprofil $Stufe $TemperaturAbluftAussen $TemperaturAbluftInnen $TemperaturNachVorheizregister $TemperaturZuluftAussen $TemperaturZuluftInnen $VentilatorvolumenAbluft $VentilatorvolumenZuluft $VerbrauchLueftungGesamt $VerbrauchVorheizregisterGesamt $ZeitAllgemein $ZeitBypass $ZeitFilterwechsel $ZustandBypass $ZustandFrostschutzAusgleich");
 }
 
 1;
